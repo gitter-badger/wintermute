@@ -18,7 +18,7 @@
 #include "logging.hpp"
 #include <log4cxx/logger.h>
 #include <log4cxx/basicconfigurator.h>
-#include <log4cxx/simplelayout.h>
+#include <log4cxx/ttcclayout.h>
 #include <log4cxx/fileappender.h>
 #include <log4cxx/consoleappender.h>
 #include <log4cxx/fileappender.h>
@@ -42,7 +42,7 @@ Logging::Logging()
 {
   log4cxx::BasicConfigurator::configure();
   LoggerPtr rootLogger = obtain_logger("root");
-  log4cxx::LayoutPtr layoutPtr(new log4cxx::SimpleLayout);
+  log4cxx::LayoutPtr layoutPtr(new log4cxx::TTCCLayout);
   log4cxx::ConsoleAppender* consoleAppender = new log4cxx::ConsoleAppender(layoutPtr);
   log4cxx::FileAppender* fileAppender = new log4cxx::FileAppender(layoutPtr, "wintermute.log");
   consoleAppender->setTarget(log4cxx::ConsoleAppender::getSystemOut());
